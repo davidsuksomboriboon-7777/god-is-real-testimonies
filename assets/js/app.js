@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <img 
           src="${thumbUrl}" 
           alt="${video.title} - ${video.person}" 
-          loading="lazy"
           class="w-full h-full object-cover"
           onerror="this.src='https://img.youtube.com/vi/${video.id}/mqdefault.jpg'"
         />
