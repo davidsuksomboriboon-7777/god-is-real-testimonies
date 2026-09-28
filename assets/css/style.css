@@ -1,0 +1,211 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Noto Sans Thai Font Definitions
+   ========================================================================== */
+@font-face {
+  font-family: 'Noto Sans Thai';
+  src: url('../fonts/NotoSansThai-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Thai';
+  src: url('../fonts/NotoSansThai-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Thai';
+  src: url('../fonts/NotoSansThai-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Thai';
+  src: url('../fonts/NotoSansThai-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --nwc-red: #D6001C;
+  --nwc-red-dark: #A30015;
+  --nwc-red-glow: rgba(214, 0, 28, 0.4);
+  --gold-accent: #F59E0B;
+  --gold-glow: rgba(245, 158, 11, 0.35);
+  --bg-deep: #090D16;
+  --bg-card: #131B2E;
+  --bg-card-hover: #1A253F;
+}
+
+* {
+  font-family: 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: #F1F5F9;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090D16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27354E;
+  border-radius: 9999px;
+  border: 2px solid #090D16;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D6001C;
+}
+
+/* Glow & Accent Utilities */
+.glow-red {
+  box-shadow: 0 0 25px -4px var(--nwc-red-glow);
+}
+
+.glow-gold {
+  box-shadow: 0 0 25px -4px var(--gold-glow);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-red {
+  background: linear-gradient(135deg, #FF6B6B 0%, #D6001C 60%, #990013 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(19, 27, 46, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(9, 13, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Video Card Enhancements */
+.video-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(180deg, #151D30 0%, #0E1524 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(214, 0, 28, 0.5);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(214, 0, 28, 0.25);
+}
+
+.video-card:hover .play-button {
+  transform: scale(1.15);
+  background-color: var(--nwc-red);
+  box-shadow: 0 0 25px var(--nwc-red-glow);
+}
+
+.video-card .thumbnail-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.video-card .thumbnail-wrapper img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-card:hover .thumbnail-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Modal Animations */
+#video-modal {
+  transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+}
+
+#video-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#video-modal .modal-content {
+  transform: scale(0.95);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#video-modal.active .modal-content {
+  transform: scale(1);
+}
+
+/* Bible Verse Section Backdrop */
+.bible-verse-bg {
+  position: relative;
+  background-image: url('../images/jesus-helping-hand.png');
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bible-verse-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 13, 22, 0.94) 0%,
+    rgba(9, 13, 22, 0.82) 45%,
+    rgba(9, 13, 22, 0.95) 100%
+  );
+}
+
+/* Category Filter Tabs Active State */
+.filter-btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-btn.active {
+  background-color: var(--nwc-red);
+  color: #FFFFFF;
+  border-color: #EF4444;
+  box-shadow: 0 4px 18px -2px var(--nwc-red-glow);
+}
+
+/* Animation utilities */
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s infinite ease-in-out;
+}
