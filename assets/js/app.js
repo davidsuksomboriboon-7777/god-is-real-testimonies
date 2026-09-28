@@ -125,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="flex items-center gap-2 mb-2 text-xs font-semibold text-[#D6001C]">
             <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
             <span>${video.person}</span>
-            <span class="text-slate-300">•</span>
-            <span class="text-slate-500 font-normal">${video.highlight || 'คำพยานชีวิต'}</span>
+            ${video.highlight ? `<span class="text-slate-300">•</span><span class="text-slate-500 font-normal">${video.highlight}</span>` : ''}
           </div>
 
           <!-- Video Title -->
@@ -135,9 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </h3>
 
           <!-- Quote Excerpt -->
+          ${video.keyQuote ? `
           <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 italic leading-relaxed">
-            "${video.keyQuote || 'พระเจ้าทรงสำแดงความรักและพระคุณอัศจรรย์ในชีวิต'}"
-          </p>
+            "${video.keyQuote}"
+          </p>` : ''}
         </div>
 
         <!-- Card Footer Actions -->
@@ -252,8 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalIframe.src = `https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`;
     modalTitle.textContent = video.title;
-    modalPerson.textContent = `${video.person} • ${video.branch || 'นิวไวน์'} (${video.highlight || 'คำพยานชีวิต'})`;
-    modalQuote.textContent = `"${video.keyQuote || 'ขอบคุณพระเจ้าสำหรับการอวยพรและการเปลี่ยนแปลงชีวิต'}"`;
+    const highlightSnippet = video.highlight ? ` (${video.highlight})` : '';
+    modalPerson.textContent = `${video.person} • ${video.branch || 'นิวไวน์'}${highlightSnippet}`;
+    if (video.keyQuote) {
+      modalQuote.textContent = `"${video.keyQuote}"`;
+      modalQuote.style.display = 'block';
+    } else {
+      modalQuote.textContent = '';
+      modalQuote.style.display = 'none';
+    }
     modalCategoryBadge.className = `px-2.5 py-1 text-xs font-medium rounded-full ${getCategoryBadgeClass(video.category)}`;
     modalCategoryBadge.textContent = getCategoryName(video.category);
     modalYtLink.href = `https://www.youtube.com/watch?v=${video.id}`;
