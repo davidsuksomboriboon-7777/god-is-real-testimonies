@@ -12,10 +12,10 @@ const TESTIMONY_CATEGORIES = {
   },
   business: {
     id: 'business',
-    name: 'ธุรกิจ การเงิน การงาน & ชีวิตส่วนตัว',
-    shortName: 'ธุรกิจ & การเงิน',
+    name: 'การเงินการงาน & ชีวิตส่วนตัว',
+    shortName: 'การเงินการงาน & ชีวิตส่วนตัว',
     icon: 'trending-up',
-    badgeClass: 'bg-amber-500/15 text-amber-700 border-amber-300 dark:text-amber-300 dark:border-amber-500/40',
+    badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
     description: 'การอวยพรและการเปิดทางในหน้าที่การงาน ปลดหนี้ และความสำเร็จที่มาจากพระเจ้า'
   },
   deliverance: {
@@ -23,7 +23,7 @@ const TESTIMONY_CATEGORIES = {
     name: 'ช่วยกู้และเปลี่ยนแปลงชีวิต',
     shortName: 'ช่วยกู้ & เปลี่ยนชีวิต',
     icon: 'heart-handshake',
-    badgeClass: 'bg-red-500/15 text-red-700 border-red-300 dark:text-red-300 dark:border-red-500/40',
+    badgeClass: 'bg-red-50 text-red-700 border-red-200',
     description: 'รอดพ้นจากความมืด พันธนาการ สิ่งเสพติด และการกลับใจสู่ชีวิตใหม่ในพระคริสต์'
   },
   healing: {
@@ -31,7 +31,7 @@ const TESTIMONY_CATEGORIES = {
     name: 'การรักษาจากพระเจ้า',
     shortName: 'การรักษาโรค',
     icon: 'activity',
-    badgeClass: 'bg-emerald-500/15 text-emerald-700 border-emerald-300 dark:text-emerald-300 dark:border-emerald-500/40',
+    badgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     description: 'การรักษาอัศจรรย์ โรคร้าย มะเร็ง อาการป่วยเรื้อรัง และโรคซึมเศร้าหายขาด'
   }
 };

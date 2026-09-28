@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const getCategoryBadgeClass = (catId) => {
     switch (catId) {
       case 'business':
-        return 'bg-amber-500/15 text-amber-300 border border-amber-500/30';
+        return 'bg-amber-50 text-amber-800 border border-amber-200';
       case 'deliverance':
-        return 'bg-red-500/15 text-red-300 border border-red-500/30';
+        return 'bg-red-50 text-red-700 border border-red-200';
       case 'healing':
-        return 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30';
+        return 'bg-emerald-50 text-emerald-800 border border-emerald-200';
       default:
-        return 'bg-slate-700/50 text-slate-300 border border-slate-600/40';
+        return 'bg-slate-100 text-slate-700 border border-slate-200';
     }
   };
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render Video Card
   const createVideoCard = (video, index) => {
     const card = document.createElement('article');
-    card.className = 'video-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer';
+    card.className = 'video-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer bg-white';
     card.setAttribute('data-id', video.id);
     card.setAttribute('data-index', index);
 
@@ -80,18 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const thumbUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
 
     card.innerHTML = `
-      <div class="thumbnail-wrapper aspect-video bg-slate-900 relative">
+      <div class="thumbnail-wrapper aspect-video bg-slate-100 relative">
         <img 
           src="${thumbUrl}" 
           alt="${video.title} - ${video.person}" 
           class="w-full h-full object-cover"
           onerror="this.src='https://img.youtube.com/vi/${video.id}/mqdefault.jpg'"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
         
         <!-- Category Badge -->
         <div class="absolute top-3 left-3 z-10">
-          <span class="px-2.5 py-1 text-xs font-medium rounded-full backdrop-blur-md ${getCategoryBadgeClass(video.category)} flex items-center">
+          <span class="px-2.5 py-1 text-xs font-semibold rounded-full shadow-sm backdrop-blur-md ${getCategoryBadgeClass(video.category)} flex items-center">
             ${getCategoryIconSvg(video.category)}
             <span>${getCategoryName(video.category)}</span>
           </span>
@@ -99,14 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <!-- Church Branch Badge -->
         <div class="absolute top-3 right-3 z-10">
-          <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-black/60 backdrop-blur-md text-slate-300 border border-white/10">
+          <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20">
             ${video.branch || 'นิวไวน์'}
           </span>
         </div>
 
         <!-- Play Button Overlay -->
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="play-button w-14 h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl group-hover:scale-110">
+          <div class="play-button w-14 h-14 rounded-full bg-[#D6001C] text-white flex items-center justify-center transition-all duration-300 shadow-xl group-hover:scale-110">
             <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>
@@ -114,40 +114,40 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <!-- Duration / Platform -->
-        <div class="absolute bottom-2.5 right-3 text-[11px] font-medium text-white/90 bg-black/70 px-2 py-0.5 rounded backdrop-blur-sm flex items-center gap-1">
-          <i data-lucide="play-circle" class="w-3 h-3 text-red-500"></i> ดูคลิปในเว็บ
+        <div class="absolute bottom-2.5 right-3 text-[11px] font-medium text-white bg-black/70 px-2 py-0.5 rounded backdrop-blur-sm flex items-center gap-1">
+          <i data-lucide="play-circle" class="w-3 h-3 text-red-400"></i> ดูคลิปในเว็บ
         </div>
       </div>
 
       <div class="p-5 flex-1 flex flex-col justify-between">
         <div>
           <!-- Speaker Info -->
-          <div class="flex items-center gap-2 mb-2 text-xs font-medium text-red-400">
+          <div class="flex items-center gap-2 mb-2 text-xs font-semibold text-[#D6001C]">
             <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
             <span>${video.person}</span>
-            <span class="text-slate-600">•</span>
-            <span class="text-slate-400">${video.highlight || 'คำพยานชีวิต'}</span>
+            <span class="text-slate-300">•</span>
+            <span class="text-slate-500 font-normal">${video.highlight || 'คำพยานชีวิต'}</span>
           </div>
 
           <!-- Video Title -->
-          <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-red-400 transition-colors line-clamp-2 mb-2.5 leading-snug">
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#D6001C] transition-colors line-clamp-2 mb-2 leading-snug">
             ${video.title}
           </h3>
 
           <!-- Quote Excerpt -->
-          <p class="text-xs sm:text-sm text-slate-400 line-clamp-2 italic leading-relaxed">
+          <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 italic leading-relaxed">
             "${video.keyQuote || 'พระเจ้าทรงสำแดงความรักและพระคุณอัศจรรย์ในชีวิต'}"
           </p>
         </div>
 
         <!-- Card Footer Actions -->
-        <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-red-400 group-hover:translate-x-1 transition-transform font-semibold">
+        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span class="inline-flex items-center gap-1 text-[#D6001C] group-hover:translate-x-1 transition-transform font-semibold">
             คลิกเพื่อชมวิดีโอ <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </span>
           <button 
-            type="button"
-            class="share-btn p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            type="button" 
+            class="share-btn p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
             title="แชร์คลิปนี้"
             data-video-id="${video.id}"
             data-video-title="${video.title}"
